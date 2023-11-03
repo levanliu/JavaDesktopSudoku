@@ -22,7 +22,7 @@ public class GameLogic {
         if (tilesAreNotFilled(grid))
             return GameState.ACTIVE;
         if (!isValidSudo(grid))
-            return GameState.ERROR;
+            return GameState.WRONGANSWER;
         return GameState.COMPLETE;
     }
 
@@ -54,7 +54,7 @@ public class GameLogic {
                     continue;
                 } else {
                     int digits = grid[i][j];
-                    if (!row[i][digits] && !col[j][digits] && !cell[i / 3 * 3 + j / 3][digits]) {
+                    if (row[i][digits]!=false || col[j][digits]!=false || cell[i / 3 * 3 + j / 3][digits]!=false) {
                         return false;
                     }
                     row[i][digits] = col[j][digits] = cell[i / 3 * 3 + j / 3][digits] = true;
