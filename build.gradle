@@ -18,7 +18,8 @@ plugins {
 javafx {
     version = "17"
     modules = [ 'javafx.controls', 'javafx.fxml']
-    mainClassName = "com.wissassblog.sudoku.Main"
+    mainClassName = "com.levan.sudoku.Main"
+    
 
 }
 
