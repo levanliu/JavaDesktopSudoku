@@ -1,4 +1,4 @@
-   33     } 
+package com.levan.sudoku.userinterface;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;

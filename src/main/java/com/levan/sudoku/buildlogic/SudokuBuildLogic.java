@@ -1,4 +1,4 @@
-   28 public class SudokuBuildLogic { 
+package com.levan.sudoku.buildlogic;
 
 import java.io.IOException;
 
