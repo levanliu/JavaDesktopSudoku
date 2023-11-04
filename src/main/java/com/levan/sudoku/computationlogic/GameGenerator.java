@@ -27,7 +27,7 @@ class GameGenerator {
         Random random = new Random(System.currentTimeMillis());
         int[][] newGrid = new int[GRID_BOUNDARY][GRID_BOUNDARY];
         int allocations = 0;
-        while (allocations < 8) {
+        while (allocations < GRID_BOUNDARY) {
             int xCoordinate = random.nextInt(GRID_BOUNDARY);
             int yCoordinate = random.nextInt(GRID_BOUNDARY);
 
@@ -40,8 +40,7 @@ class GameGenerator {
                 }
             }
         }
-        int[][] tmpGrid = new int[GRID_BOUNDARY][GRID_BOUNDARY];
-        tmpGrid = SudokuUtilities.copyToNewArray(newGrid);
+        int[][] tmpGrid = SudokuUtilities.copyToNewArray(newGrid);
         if (SudokuSolver.puzzleIsSolvable(tmpGrid)) {
             for (int i = 0; i < 40; i++) {
                 int xCoordinate = random.nextInt(GRID_BOUNDARY);
