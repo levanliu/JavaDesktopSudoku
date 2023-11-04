@@ -48,8 +48,8 @@ class GameGenerator {
                 int yCoordinate = random.nextInt(GRID_BOUNDARY);
                 tmpGrid[xCoordinate][yCoordinate] = 0;
             }
-                    newGrid = SudokuUtilities.copyToNewArray(tmpGrid);
-        return newGrid;
+            newGrid = SudokuUtilities.copyToNewArray(tmpGrid);
+            return newGrid;
         }
         return getSolvedGame();
     }
