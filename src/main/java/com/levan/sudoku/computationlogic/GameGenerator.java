@@ -42,11 +42,11 @@ class GameGenerator {
         }
         int[][] tmpGrid = SudokuUtilities.copyToNewArray(newGrid);
         if (SudokuSolver.puzzleIsSolvable(tmpGrid)) {
-            for (int i = 0; i < 40; i++) {
-                int xCoordinate = random.nextInt(GRID_BOUNDARY);
-                int yCoordinate = random.nextInt(GRID_BOUNDARY);
-                tmpGrid[xCoordinate][yCoordinate] = 0;
-            }
+            // for (int i = 0; i < 40; i++) {
+                // int xCoordinate = random.nextInt(GRID_BOUNDARY);
+                // int yCoordinate = random.nextInt(GRID_BOUNDARY);
+                // tmpGrid[xCoordinate][yCoordinate] = 0;
+            // }
             newGrid = SudokuUtilities.copyToNewArray(tmpGrid);
             return newGrid;
         }
