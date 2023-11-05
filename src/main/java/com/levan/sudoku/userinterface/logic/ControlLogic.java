@@ -1,6 +1,5 @@
 package com.levan.sudoku.userinterface.logic;
 
-
 import com.levan.sudoku.constants.GameState;
 import com.levan.sudoku.constants.Messages;
 import com.levan.sudoku.computationlogic.GameLogic;
@@ -11,15 +10,18 @@ import com.levan.sudoku.userinterface.IUserInterfaceContract;
 import java.io.IOException;
 
 /**
- * Since this is a single screen application, just one container (class) for the logic of the user
- * interface is necessary. Break these things up when building applications with more
+ * Since this is a single screen application, just one container (class) for the
+ * logic of the user
+ * interface is necessary. Break these things up when building applications with
+ * more
  * screens/features. Don't build God Classes!
  */
 
 public class ControlLogic implements IUserInterfaceContract.EventListener {
 
     private IStorage storage;
-    // Remember, this could be the real UserInterfaceImpl, or it could be a test class
+    // Remember, this could be the real UserInterfaceImpl, or it could be a test
+    // class
     // which implements the same interface!
     private IUserInterfaceContract.View view;
 
@@ -29,11 +31,12 @@ public class ControlLogic implements IUserInterfaceContract.EventListener {
     }
 
     /**
-     * Use Case: 1. Retrieve current "state" of the data from IStorage 2. Update it according to the
+     * Use Case: 1. Retrieve current "state" of the data from IStorage 2. Update it
+     * according to the
      * input 3. Write the result to IStorage
      * 
-     * @param x X coordinate of the selected input
-     * @param y Y ...
+     * @param x     X coordinate of the selected input
+     * @param y     Y ...
      * @param input Which key was entered, One of: - Numbers 0-9
      *
      */
@@ -46,32 +49,31 @@ public class ControlLogic implements IUserInterfaceContract.EventListener {
 
             gameData = new SudokuGame(GameLogic.checkForCompletion(newGridState), newGridState);
 
-            storage.updateGameData(gameData);
+            this.storage.updateGameData(gameData);
 
             // either way, update the view
-            view.updateSquare(x, y, input);
+            this.view.updateSquare(x, y, input);
 
             if (gameData.getGameState() == GameState.WRONGANSWER)
-                view.showDialog(Messages.WRONG_ANSWER);
+                this.view.showDialog(Messages.WRONG_ANSWER);
 
             // if game is complete, show dialog
             if (gameData.getGameState() == GameState.COMPLETE)
-                view.showDialog(Messages.GAME_COMPLETE);
+                this.view.showDialog(Messages.GAME_COMPLETE);
 
         } catch (IOException e) {
             e.printStackTrace();
-            view.showError(Messages.ERROR);
+            this.view.showError(Messages.ERROR);
         }
     }
 
     @Override
     public void onDialogClick() {
         try {
-            storage.updateGameData(GameLogic.getNewGame());
-
-            view.updateBoard(storage.getGameData());
+            this.storage.updateGameData(GameLogic.getNewGame());
+            this.view.updateBoard(storage.getGameData());
         } catch (IOException e) {
-            view.showError(Messages.ERROR);
+            this.view.showError(Messages.ERROR);
         }
     }
 }
