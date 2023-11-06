@@ -44,7 +44,7 @@ class GameGenerator {
         }
 
         if (SudokuSolver.puzzleIsSolvable(newGrid)) {
-            SudokuSolver.puzzleSolve(newGrid);
+            newGrid = SudokuSolver.puzzleSolve(newGrid).get(0);
             return newGrid;
         }
         return getSolvedGame();
@@ -84,7 +84,7 @@ class GameGenerator {
 
             // remove 40 random numbers
             int index = 0;
-            while (index < 40) {
+            while (index < 2) {
                 int xCoordinate = random.nextInt(GRID_BOUNDARY);
                 int yCoordinate = random.nextInt(GRID_BOUNDARY);
 

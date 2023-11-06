@@ -70,8 +70,9 @@ public class ControlLogic implements IUserInterfaceContract.EventListener {
     @Override
     public void onDialogClick() {
         try {
-            this.storage.updateGameData(GameLogic.getNewGame());
-            this.view.updateBoard(storage.getGameData());
+            SudokuGame game = GameLogic.getNewGame();
+            this.storage.updateGameData(game);
+            this.view.updateBoard(this.storage.getGameData());
         } catch (IOException e) {
             this.view.showError(Messages.ERROR);
         }

@@ -12,10 +12,8 @@ import com.levan.sudoku.userinterface.logic.ControlLogic;
 public class SudokuBuildLogic {
 
     /**
-     * This class takes in the uiImpl object which is tightly-coupled to the JavaFX
-     * framework,
-     * and binds that object to the various other objects necessary for the
-     * application to function.
+     * This class takes in the uiImpl object which is tightly-coupled to the JavaFX framework, and
+     * binds that object to the various other objects necessary for the application to function.
      */
     public static void build(IUserInterfaceContract.View userInterface) throws IOException {
         SudokuGame initialState;

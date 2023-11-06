@@ -47,11 +47,10 @@ public class SudokuSolver {
 
     public static boolean puzzleIsSolvable(int[][] board) {
         int[][] puzzle = SudokuUtilities.copyToNewArray(board);
-        puzzleSolve(puzzle);
-        return valid;
+        return puzzleSolve(puzzle).size()>0;
     }
 
-    public static void puzzleSolve(int[][] puzzle) {
+    public static List<int[][]> puzzleSolve(int[][] puzzle) {
         for (int i = 0; i < GRID_BOUNDARY; i++) {
             Arrays.fill(row[i], false);
             Arrays.fill(col[i], false);
@@ -68,6 +67,7 @@ public class SudokuSolver {
             }
         }
         dfs(puzzle, 0);
+        return solutions;
     }
 
     public static void printPuzzle(int[][] puzzle) {
